@@ -1,78 +1,83 @@
-# ROLL A BALL
-
-# AIM:
-To Roll a Ball using C# program in unity .
+# EX04:CONSTRUCTOR:
 
 # ALGORITHM:
-File -> Scene -> Select the scene -> Save as-> New folder(Scenes)-> File name (MiniGame)
+To write a C# program to calculate the salary of an employee by passing the name, designation, noofexperience, basic salary and insurance amount through constructor.
 
-Heirarchy -> 3D Object-> Plane [ Right side-> Inspector-> Change the name of plane (Name: Ground) Transform -> Reset Edit -> FrameSelected ]
+# Equipment Required:
+Hardware:pc software:Visual Studio.
+# Algorithm:
+## Step1:
+Start the program.
 
-Scale the ground by giving the scaling value as x=4 y=1 z=4
+## Step2:
+Create a class and a constructor
 
-Heirarchy -> 3D Object-> Sphere [ Right side-> Inspector-> Change the name of plane (Name: Player) Transform -> Reset Edit -> FrameSelected Transform -> Position -> y=0.5]
+## Step3:
+Get name, designation, noofexperience, basic salary and insurance amount from the User.
 
-Hierarchy -> DirectionalLight [ Inspector -> Change the color to white (255,255,255)]
+## cStep4:
+call salary method in constructor to calculate salary.
 
-Create a folder in project and name as Materials [Material folder -> Create -> Material (Name: Background) Inspector ->Surface Inputs ->BaseMAp (Choose the color) Metallic map-> 0 Smoothness -> 0.25 Drag the Background to the plane and release the mouse
+## Step5:
+call display method to display the output.
 
-Material folder -> Create -> Material (Name: Sphere) Inspector ->Surface Inputs ->BaseMAp (Choose the color) Metallic map-> 0 Smoothness -> 0.75 Drag the Sphere material to the ball and release the mouse
+## Step6:
+End the program
 
-Hierarchy -> Player-> Inspector ->Add component-> Rigidbody
-
-Create a new script -> Create a folder in project (Name: Scripts) Hierarchy -> Player -> Inspector-> AddComponent-> NewScripts-> PlayerController( Click create and Add) Copy the PlayerController and drag to Script folder Double click the PlayerController file and type the coding
-
-# PROGRAM:
-``python
-Name : harithashree.v
-Reg.no : 212222230046
-
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class balls : MonoBehaviour
+# Program:
+```python
+using System;
+public class Employee
 {
-    float XForce = 5.0f;
-    float zForce = 20.0f;
-    float yForce = 10.0f;
-    void Start()
-    {
-        
-    }
+   public String designation;
+   public String employee_name;
+   public int exp;
+   public int bs;
+   public int insurance;
+   double hra, ta, salaryam;
 
-    // Update is called once per frame
-    void Update()
-    {
-        float x = 0.0f, y = 0.0f, z = 0.0f;
-        if(Input.GetKey(KeyCode.A))
-        {
-            x = x - XForce;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            x = x + XForce;
-        }
-        if (Input.GetKey(KeyCode.W))
-        {
-            z = z - zForce;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            z = z + zForce;
-        }
-        if (Input.GetKey(KeyCode.Space))
-        {
-            y = yForce;
-        }
-        GetComponent<Rigidbody>().AddForce(x, y, z);
-    }
+   public Employee(String employee_name, String designation, int exp, int bs, int i)
+   {
+       this.employee_name = employee_name;
+       this.designation = designation;
+       this.exp = exp;
+       this.bs = bs;
+       this.insurance = i;
+   }
+   public void salary()
+   {
+       hra = this.bs * 0.2;
+       ta = this.bs * 0.1;
+       salaryam = this.bs + hra + ta - this.insurance;
+
+   }
+   public void display()
+   {
+
+       Console.WriteLine("Name of the employee is {0} having {1} years of experience,working as {2}", this.employee_name, this.exp, this.designation);
+       Console.WriteLine("Receives {0} of salary.", salaryam);
+
+   }
+
 }
-``
-# OUTPUT:
-![Screenshot 2023-10-02 140602](https://github.com/haritha-venkat/Ex04-Constructor/assets/121285701/5e836e19-ed4d-44e8-9abf-343939a73d3e)
+class TestEmployee
+{
+   public static void Main(string[] args)
+   {
+       Employee e1 = new Employee("Leann", "HR", 7, 30000, 1000);
+       e1.salary();
+       Employee e2 = new Employee("Teja", "Analyst", 9, 25000, 1000);
+       e2.salary();
+       e1.display();
+       e2.display();
+
+   }
+}
+```
+Output:
+![image](https://github.com/haritha-venkat/Ex04-Constructor/assets/121285701/bec80bf6-926f-411a-bb6c-57b10db0d061)
 
 
-# RESULT:
-Thus, The 3D application for Roll the Ball objects in unity is developed successfully.
+Result:
+Thus C# program to calculate the salary of an employee by passing the name, designation, noofexperience, basic salary and insurance amount through constructor is executed successfully.
 
